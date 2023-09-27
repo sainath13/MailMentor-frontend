@@ -27,17 +27,6 @@ function EmailList({
 
   return (
     <div className="email-list-view">
-      <section className="title-container">
-        <p className="title">Recent emails</p>
-        <button
-          className="primary small"
-          onClick={handleComposeEmail}
-          disabled={draftEmail?.isOpen}
-        >
-          <IconEdit />
-          Compose
-        </button>
-      </section>
       <section className="email-list-container">
         {emails.length === 0 ? (
           <p>Loading emails.</p>
