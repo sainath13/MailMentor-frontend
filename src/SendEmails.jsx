@@ -129,12 +129,12 @@ function SendEmails({
       {!style && <h3 className="title">New message</h3>}
       <div className="input-container">
         <label className="input-label" htmlFor="To">
-          Ask AI
+          AI
         </label>
         <input
           aria-label="To"
           type="text"
-          value="Any question about the mail to AI"
+          value="Ask me any question about the mail"
           // value={to}
           onChange={(e) => console.log("Test")}
         />
@@ -170,7 +170,7 @@ function SendEmails({
           type="submit"
           onClick={() => setClickedButton('askAI')}
         >
-          {isSending ? 'Analysing with ai...' : 'Ask AI'}
+          {isSending && clickedButton === 'askAI' ? 'Asking AI' : 'Ask AI'}
         </button>
         <button
           className={`secondary ${style}`}
