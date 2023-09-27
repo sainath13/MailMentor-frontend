@@ -95,7 +95,7 @@ function App() {
       disconnectUser={disconnectUser}
       refresh={refresh}
       isLoading={isLoading}
-      title="Email AI app with Nylas and Llama 2"
+      title="MailMentor : Your Llama 2 Email  Mentor"
       toastNotification={toastNotification}
       setToastNotification={setToastNotification}
     >
