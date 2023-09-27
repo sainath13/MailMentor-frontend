@@ -74,7 +74,8 @@ const messageReducer = (messages, { type, payload }) => {
             draft: {
               replyToMessageId: payload.message.id,
               subject: payload.message.subject,
-              to: '',
+              to: payload.message?.from?.length
+              ? payload.message.from[0].email || '' : '',
               body: null,
               originalText : payload.message?.originalText
             },

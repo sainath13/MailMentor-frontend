@@ -74,6 +74,33 @@ function SendEmails({
       return false;
     }
   };
+  const sendRealEmail = async ({ userId, to, body }) => {
+    try {
+      const url = nylas.serverBaseUrl + '/nylas/send-email';
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: {
+          Authorization: userId,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ ...draftEmail, to, subject, body }),
+      });
+
+      if (!res.ok) {
+        setToastNotification('error');
+        throw new Error(res.statusText);
+      }
+
+      const data = await res.json();
+
+      return data;
+    } catch (error) {
+      console.warn(`Error sending emails:`, error);
+      setToastNotification('error');
+
+      return false;
+    }
+  };
 
   const send = async (e) => {
     e.preventDefault();
@@ -83,7 +110,7 @@ function SendEmails({
     }
     setIsSending(true);
     if(clickedButton === 'reply'){
-      //const message = await sendRealEmail({ userId, to, body });
+      const message = await sendRealEmail({ userId, to, body });
       console.log('message sent from reply');
       setIsSending(false);
       //setBody(message['ai_response'])
@@ -107,9 +134,9 @@ function SendEmails({
         <input
           aria-label="To"
           type="text"
-          // value="Any question about the mail"
-          value={to}
-          onChange={(e) => setTo(e.target.value)}
+          value="Any question about the mail to AI"
+          // value={to}
+          onChange={(e) => console.log("Test")}
         />
         {!style && (
           <>
