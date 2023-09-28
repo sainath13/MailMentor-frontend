@@ -158,7 +158,7 @@ function SendEmails({
         className="message-body"
         aria-label="Message body"
         placeholder="Type your message..."
-        rows={style === 'small' ? 3 : 20}
+        rows={style === 'small' ? 10 : 20}
         value={!body ? "" : body }
         onChange={(e) => setBody(e.target.value)}
       />
