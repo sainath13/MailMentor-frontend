@@ -1,2 +1,2 @@
-Mailmentor backend
+Mailmentor frontend
 
